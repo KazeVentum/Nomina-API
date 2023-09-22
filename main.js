@@ -6,6 +6,8 @@ const dialog = document.querySelector("dialog");
 console.log(dialog)
 
 // URL de API MockAPI Requests and Response
+
+// Remplaza la constante URL para conectarse con tu API
 const url = "https://650b10a4dfd73d1fab098284.mockapi.io/Tab"
 
 
