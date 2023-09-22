@@ -3,8 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./main.js" defer type="module"></script>
     <title>Nomina-Api</title>
 </head>
 <body>
+    <dialog>
+        <!-- Edicion de la Data Formulario -->
+        <h2>Edit Data</h2>
+        <form id="formEdit" action="">
+            <input type="number" name="valor" id="valor" placeholder="Escribe aqui el valor">
+            <input type="radio" name="caja" id="caja" value="ingreso"><label for="caja">Ingreso</label>
+            <input type="radio" name="caja" id="caja" value="egreso"><label for="caja">Egreso</label>
+            <input type="submit" name="sent" id="sent" value="Enviar">
+        </form>
+    </dialog>
+
+        <!-- Formulario standard REST -->
+    <h1>Formulario API REST CONSUMO</h1>
+    <form id="formAdd" action="">
+        <input type="number" name="valor" id="valor" placeholder="Escribe aqui el valor">
+        <input type="radio" name="caja" id="caja" value="ingreso"><label for="caja">Ingreso</label>
+        <input type="radio" name="caja" id="caja" value="egreso"><label for="caja">Egreso</label>
+        <input type="submit" name="sent" id="sent" value="Enviar">
+    </form>
+
+    <!-- Formato de tabla -->
+    <table>
+        <thead>
+            <th>Id</th>
+            <th>Valor</th>
+            <th>Tipo</th>
+            <th>Acciones</th>
+        </thead>
+        <tbody id="data-table">
+            
+        </tbody>
+    </table>
+
 </body>
 </html>
