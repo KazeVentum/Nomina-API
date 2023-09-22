@@ -6,7 +6,7 @@ const dialog = document.querySelector("dialog");
 console.log(dialog)
 
 // URL de API MockAPI Requests and Response
-const url = "https://650b10a4dfd73d1fab098284.mockapi.io/tab"
+const url = "https://650b10a4dfd73d1fab098284.mockapi.io/Tab"
 
 
 // FUNCIONES
@@ -50,8 +50,8 @@ const editData = async (id)=>{
             headers:{"content-type":"application/json"},
             body: JSON.stringify(dato)
         }
-        
         let res = fetch(url+"/"+id,config);
+
         dialog.close();
     })
 }
@@ -63,4 +63,58 @@ const deleteDAta = async(id)=>{
         headers:{"content-type":"application/json"}
     }
     let res = await(await fetch( url + "/" + id , config )).json();
+    location.reload();
 }
+
+
+document.addEventListener("DOMContentLoaded", async (e)=>{
+    const tabla = document.querySelector("#data-table");
+    let res = await(await fetch(url)).json();
+    console.log(res)
+    res.map((element)=>{tabla.insertAdjacentHTML("beforeend",`
+    <tr>
+        <td>${element.id}</td>
+        <td>${element.valor}</td>
+        <td>${element.caja}</td>
+        <td>
+            <button id="${element.id}" class="delet"> 
+            
+            Eliminar
+                
+            </button>
+            <button id="${element.id}" class="edit"> 
+            
+            Editar
+
+            </button>
+        </td>
+    </tr>
+    `)})
+
+    //Llamar Metodo Eliminar
+    const btDelet = document.querySelectorAll(".delet");
+    console.log(btDelet)
+
+    //Llamar Metodo Editar
+    const btEdit = document.querySelectorAll(".edit");
+    console.log(btEdit);
+
+    // Inicializacion Delete
+    btDelet.forEach((element) =>{
+        element.addEventListener("click",()=>{
+            deleteDAta(element.id);
+        })
+    });
+
+    // Inicializacion Edit
+    btEdit.forEach((element)=>{
+        element.addEventListener("click",(event)=>{
+            dialog.showModal();
+            editData(element.id);
+        })
+    });
+});
+
+
+    
+    
